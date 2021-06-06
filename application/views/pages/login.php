@@ -45,9 +45,7 @@
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
-
-                            <?php  ?>
-
+                            <p>info : user@gmail.com pass user <br> admin@admin.com pass admin </p>
                         </form>
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
