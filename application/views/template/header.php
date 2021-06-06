@@ -5,11 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= $title ?></title>
 	<?= $style ?>
+	<style>
+		.nav-link{
+			color: #F4E9CD !important;
+			text-transform: uppercase;
+			font-size: 0.9rem;
+			font-weight: bold;
+		}
+		.nav-item:hover { background: #F4E9CD !important;}
+		.nav-link:hover { color: #77ACA2 !important;}
+		.navbar-toggler{
+			background: #F4E9CD;
+			border: 0;
+		}
+	</style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #468189;">
 	<div class="container">
-		<a class="navbar-brand" href="<?= base_url() ?>">Hoteloka</a>
+		<a class="navbar-brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/images/logo/hoteloka_white.png')?>" alt="Hoteloka" height="55rem"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -20,7 +34,7 @@
 					<a class="nav-link" href="<?= base_url() ?>">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Reservation</a>
+					<a class="nav-link" href="#">Reservasi</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">About Us</a>
