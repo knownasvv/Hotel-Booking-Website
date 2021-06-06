@@ -100,7 +100,10 @@
     </div>
 
     <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="<?= base_url('assets/loginAssets/vendor/jquery/jquery.min.js')?>"></script>
+    <script src="<?= base_url('assets/loginAssets/js/main.js')?>"></script>
+</body>
 </html>
+
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+<!-- Thankyou Colorlib! -->
