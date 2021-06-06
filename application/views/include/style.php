@@ -1,4 +1,4 @@
-<!-- <link rel="icon" type="image/png" href="<?= base_url('assets/images/logo/dark_square.png')?>"/> -->
+<link rel="icon" type="image/png" href="<?= base_url('assets/images/logo/hoteloka_green.png')?>"/>
 <link rel="stylesheet" href="<?= base_url('assets/bootstrap/bootstrap.min.css'); ?>"/>
 <link rel="stylesheet" href="<?= base_url('assets/datatables/datatables.bootstrap4.min.css')?>"/>
 <link rel="stylesheet" href="<?= base_url('assets/fontawesome/css/all.css'); ?>"/>
