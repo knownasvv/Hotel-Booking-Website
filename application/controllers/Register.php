@@ -9,6 +9,6 @@ class Register extends CI_Controller
   {
     $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
     $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
-    $this->load->view('pages/register.php',$data);
+    $this->load->view('pages/register',$data);
   }
 }

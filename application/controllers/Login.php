@@ -44,7 +44,7 @@ class Login extends CI_Controller {
         $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
         $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
 
-		$this->load->view('pages/login.php',$data);
+		$this->load->view('pages/login',$data);
     }
 
     public function validate()
@@ -78,7 +78,7 @@ class Login extends CI_Controller {
                         redirect(base_url('index.php/login?captcha=false'));
                     }
                 } else {
-                    redirect(base_url('index.php/login?login=false'));
+                    redirect(base_url('index.php/login?pass=false'));
                 }
             } else {
                 redirect(base_url('index.php/login?login=false'));
