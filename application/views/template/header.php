@@ -39,6 +39,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">About Us</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?= base_url('index.php/Admin_hotel/daftar_hotel') ?>">Admin_Hotel</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?= base_url('index.php/Admin_hotel/daftar_pemesan') ?>">Admin_Pemesanan</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">

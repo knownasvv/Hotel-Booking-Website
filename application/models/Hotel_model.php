@@ -17,10 +17,18 @@ class Hotel_model extends CI_Model {
         return $query->result_array();
     }
 
+	function get_fasilitas($id_fasilitas = null) {
+		if(is_null($id_fasilitas)) $query = $this->db->get('fasilitas');
+		else $query = $this->db->get_where('fasilitas', array('id_fasilitas' => $id_fasilitas));
+		return $query->result_array();
+	}
+
 	function get_hotel($id_hotel = null) {
 		if(is_null($id_hotel)) $query = $this->db->get('hotel');
 		else $query = $this->db->get_where('hotel', array('id_hotel' => $id_hotel));
 		return $query->result_array();
 	}
+
+	
 
 }
