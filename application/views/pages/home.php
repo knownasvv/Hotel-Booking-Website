@@ -3,7 +3,6 @@
 	.card-img-top { width: 100%; height: 13rem; object-fit: fill; }
 </style>
 <div class="container">
-	<?php echo "halo, ".$_SESSION['name'] ?> <!-- Session TEMP -->
 	<h1 class="my-5 text-center">HOTEL LIST</h1>
 	<?php foreach($hotel as $h) {?>
 		<div class="card mb-3 p-0 col-12">
