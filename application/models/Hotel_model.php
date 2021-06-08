@@ -29,6 +29,8 @@ class Hotel_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	
+	function add_invoice($data) {
+		$this->db->insert('invoice', $data);
+	}
 
 }

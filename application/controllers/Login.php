@@ -75,7 +75,7 @@ class Login extends CI_Controller
                             $_SESSION['id_admin'] = $cekUser[0]['id_user'];
                             $_SESSION['name'] = $cekUser[0]['nama'];
                             $_SESSION['salt'] = "admin";
-                            redirect(base_url('index.php/admin'));
+                            redirect(base_url('index.php/admin_hotel/daftar_hotel'));
                         }
                     // } else {
                     //     redirect(base_url('index.php/login?captcha=false'));
