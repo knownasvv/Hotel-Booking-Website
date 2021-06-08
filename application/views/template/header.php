@@ -60,7 +60,7 @@
 					</li>
 				<?php } ?>
 				<li class="nav-item">
-					<a class="nav-link" href="#">About Us</a>
+					<a class="nav-link" href="<?= base_url('index.php/About') ?>">About Us</a>
 				</li>
 				<?php if(isset($_SESSION['salt']) == 'admin') { ?>
 					<li class="nav-item">
