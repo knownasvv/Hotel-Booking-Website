@@ -26,7 +26,6 @@ class Login extends CI_Controller {
             'font_size'     => 16,
             'img_id'        => 'Imageid',
             'pool'          => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-
             // White background and border, black text and red grid
             'colors'        => array(
                 'background' => array(255, 255, 255),
@@ -42,8 +41,10 @@ class Login extends CI_Controller {
         // $data['image'] = $image;
         // $data['words'] = $words;
         //$_SESSION['captcha'] = $words;
+        $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
+        $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
 
-		$this->load->view('pages/login.php');
+		$this->load->view('pages/login.php',$data);
     }
 
     public function validate()
