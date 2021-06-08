@@ -54,7 +54,7 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="<?= base_url() ?>">Home</a>
 				</li>
-				<?php if($_SESSION['salt'] == 'user') { ?>
+				<?php if(isset($_SESSION['salt']) == 'user') { ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= base_url('index.php/Hotel/Invoice')?>">Invoices</a>
 					</li>
@@ -62,7 +62,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">About Us</a>
 				</li>
-				<?php if($_SESSION['salt'] == 'admin') { ?>
+				<?php if(isset($_SESSION['salt']) == 'admin') { ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= base_url('index.php/Admin_hotel/daftar_hotel') ?>">Admin_Hotel</a>
 					</li>
