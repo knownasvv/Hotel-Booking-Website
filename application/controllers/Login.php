@@ -9,7 +9,7 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->model('user_model');
         $this->load->helper('captcha');
-        //if (!isset($_SESSION)) session_start();
+        if (!isset($_SESSION)) session_start();
     }
 
     public function index(){
@@ -21,7 +21,7 @@ class Login extends CI_Controller {
             'font_path'     => './path/to/fonts/texb.ttf',
             'img_width'     => '180',
             'img_height'    => 30,
-            'expiration'    => 60,
+            'expiration'    => 20,
             'word_length'   => 5,
             'font_size'     => 16,
             'img_id'        => 'Imageid',
@@ -35,12 +35,12 @@ class Login extends CI_Controller {
             )
         );
 
-        // $cap = create_captcha($vals);
-        // $image = $cap['image'];
-        // $words = $cap['word'];
-        // $data['image'] = $image;
-        // $data['words'] = $words;
-        //$_SESSION['captcha'] = $words;
+        $cap = create_captcha($vals);
+        $image = $cap['image'];
+        $words = $cap['word'];
+        $data['image'] = $image;
+        $data['words'] = $words;
+        $_SESSION['captcha'] = $words;
         $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
         $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
 
@@ -59,7 +59,7 @@ class Login extends CI_Controller {
             if (count($salt) != 0) {
                 $salt = $salt[0]['salt'];
                 $password = md5($password . $salt);
-                $cekUser = $this->user_model->getUser($email, $password);
+                $cekUser = $this->user_model->get_user($email, $password);
                 if ($cekUser) {
                     if (strtolower($_SESSION['captcha']) == strtolower($captcha)) {
                         if ($salt == "user") {
@@ -71,7 +71,7 @@ class Login extends CI_Controller {
                             $_SESSION['id_admin'] = $cekUser[0]['id_user'];
                             $_SESSION['name'] = $cekUser[0]['nama'];
                             $_SESSION['salt'] = "admin";
-                            redirect(base_url('index.php/admin/admin_barang'));
+                            redirect(base_url('index.php/admin'));
                         }
                     }
                     else{
