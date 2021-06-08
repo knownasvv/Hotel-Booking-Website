@@ -21,8 +21,64 @@
 		color: #031926;
 	}
 </style>
-<div class="container my-5">
-	<h1 class="mb-5 text-center" style="font-weight: bold;">HOTEL LIST</h1>
+<div class="container">
+	<div class="my-5 text-center">
+		<?php echo form_open('hotel')?>
+			<input type="text" name="cari" class="form_control" placeholder="Search Hotel">
+			<button type="submit" class="btn btn-secondary">Search</button>
+			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Filter</button>
+		<?php echo form_close()?>
+	</div>
+
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Filter Hotel</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<?php echo form_open('hotel')?>
+
+					<div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Harga :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"  name="harga" placeholder="Harga">
+                        </div>
+                    </div>
+
+					<div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Lokasi :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"  name="lokasi" placeholder="Lokasi">
+                        </div>
+                    </div>
+
+					<div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Bintang :</label>
+                        <div class="col-sm-9">
+							<select name="bintang">
+								<option value="0">0</option>
+								<option value="2">1</option>
+								<option value="4">2</option>
+								<option value="6">3</option>
+								<option value="8">4</option>
+								<option value="10">5</option>
+							</select>
+                        </div>
+                    </div>
+			</div>
+			<div class="modal-footer">
+					<button type="submit" class="btn btn-success">Search</button>
+					<?php echo form_close()?>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<h1 class="my-5 text-center">HOTEL LIST</h1>
 	<?php foreach($hotel as $h) {?>
 		<div class="card mb-3 p-0 col-12">
 			<div class="row no-gutters pr-0">

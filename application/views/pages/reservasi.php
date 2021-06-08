@@ -184,9 +184,19 @@
 
 		$('#harga').val(formatCurrency(total));
 
-		$('#harga').on('change keyup paste', function(){
-			alert("Hello");
-			$("#harga").val($('#jumlah_kamar').val());
+		$('#jumlah_kamar').on('change keyup click', function(){
+			total = $('#jumlah_kamar').val() * <?= $hotel[0]['harga'] ?> * diffDays;
+			$("#harga").val(formatCurrency(total));
+		});
+
+		$('#tgl_check_in').on('change click', function(){
+			total = $('#jumlah_kamar').val() * <?= $hotel[0]['harga'] ?> * diffDays;
+			$("#harga").val(formatCurrency(total));
+		});
+
+		$('#tgl_check_out').on('change click', function(){
+			total = $('#jumlah_kamar').val() * <?= $hotel[0]['harga'] ?> * diffDays;
+			$("#harga").val(formatCurrency(total));
 		});
 	});
 

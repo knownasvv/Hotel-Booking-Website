@@ -26,7 +26,7 @@
                         <form action="<?= base_url('index.php/Login/validate') ?>" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="email" name="email" placeholder="Your Name" required />
+                                <input type="email" name="email" placeholder="Your Email" required />
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
@@ -45,7 +45,7 @@
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
-                            <p>info : user@gmail.com pass: user <br> admin@admin.com pass: admin </p>
+                            <p>info : orang@gmail.com pass: orang <br> admin@admin.com pass: admin </p>
                         </form>
                         <div class="social-login">
                             <span class="social-label">Or login with</span>

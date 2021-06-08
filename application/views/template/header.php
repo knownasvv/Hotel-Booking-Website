@@ -56,7 +56,7 @@
 				</li>
 				<?php if($_SESSION['salt'] == 'user') { ?>
 					<li class="nav-item">
-						<a class="nav-link" href="<?= base_url('index.php/Hotel/Invoice')?>">Invoice</a>
+						<a class="nav-link" href="<?= base_url('index.php/Hotel/Invoice')?>">Invoices</a>
 					</li>
 				<?php } ?>
 				<li class="nav-item">

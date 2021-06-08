@@ -29,8 +29,37 @@ class Hotel_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	function add_invoice($data) {
-		$this->db->insert('invoice', $data);
+	function get_invoice($id_user = null) {
+		if(is_null($id_user)) $query = $this->db->get('invoice_booking_hotel');
+		else $query = $this->db->get_where('invoice_booking_hotel', array('id_user' => $id_user));
+		return $query->result_array();
 	}
+
+	function add_invoice($data) {
+		$this->db->insert('invoice_booking_hotel', $data);
+
+		$this->db->set('jumlah_kamar', 'jumlah_kamar-1', FALSE);
+		$this->db->where('id_hotel', $data['id_hotel']);
+		$this->db->update('hotel');
+	}
+	
+	function get_pilihan($cari){
+		$this->db->select('*');
+		$this->db->from('hotel');
+		$this->db->like('nama',$cari);
+		$query = $this->db->get();
+        return $query->result_array();
+	}
+
+	function get_filter($harga,$lokasi,$bintang){
+		$this->db->select('*');
+		$this->db->from('hotel');
+		$this->db->like('kota',$lokasi);
+		$this->db->where('harga >=', $harga);
+		$this->db->where('rating >=', $bintang);
+		$query = $this->db->get();
+        return $query->result_array();
+	}
+	
 
 }

@@ -10,8 +10,18 @@ class Hotel extends CI_Controller{
 		$data['header'] = $this->_header("Home");
 		$data['footer'] = $this->_footer();
 
-		$data['hotel'] = $this->hotel_model->get_hotel();
 		$data['fasilitas'] = $this->hotel_model->get_fasilitas_hotel();
+		if($this->input->post('cari')==null&&$this->input->post('harga')==null&&$this->input->post('lokasi')==null&&$this->input->post('bintang')==null){
+			$data['hotel'] = $this->hotel_model->get_hotel();
+		}else if($this->input->post('cari')!=null){
+			$cari = $this->input->post('cari');
+			$data['hotel'] = $this->hotel_model->get_pilihan($cari);
+		}else {
+			$harga = $this->input->post('harga');
+			$lokasi = $this->input->post('lokasi');
+			$bintang = $this->input->post('bintang');
+			$data['hotel'] = $this->hotel_model->get_filter($harga,$lokasi,$bintang);
+		}
 
 		$this->load->view('pages/home.php', $data);
 	}
@@ -46,7 +56,6 @@ class Hotel extends CI_Controller{
 			$data['footer'] = $this->_footer();
 	
 			$data['hotel'] = $this->hotel_model->get_hotel($id_hotel);
-			$data['fasilitas'] = $this->hotel_model->get_fasilitas_hotel($id_hotel);
 
 			$this->load->view('pages/reservasi.php', $data);
 		} else redirect(base_url('index.php/Login'));
@@ -66,21 +75,31 @@ class Hotel extends CI_Controller{
 		if($this->form_validation->run() == FALSE) {
 			$this->booking($id_hotel);
 		} else { 
-			// $buku['title'] 		= $this->input->post('title');
-			// $buku['year'] 		= $this->input->post('year');
-			// $buku['author'] 	= $this->input->post('author');
-			// $buku['publisher'] 	= $this->input->post('publisher');
-			// $buku['poster'] 	= $this->upload->data()['file_name'];
+			$invoice = $this->hotel_model->get_invoice();
+			$data_invoice['id_hotel'] 				= $id_hotel;
+			$data_invoice['id_user'] 				= $_SESSION['id_user'];
+			$data_invoice['nama_lengkap_tamu'] 		= $this->input->post('nama_lengkap');
+			$data_invoice['notelp_tamu'] 			= $this->input->post('nomor_telepon');
+			$data_invoice['email_tamu'] 			= $this->input->post('email');
+			$data_invoice['jumlah_kamar'] 			= $this->input->post('jumlah_kamar');
+			$data_invoice['tanggal_check-in'] 		= $this->input->post('tgl_check_in');
+			$data_invoice['tanggal_check-out'] 		= $this->input->post('tgl_check_out');
+			$data_invoice['harga'] 					= preg_replace('/([,\.])/', "", $this->input->post('harga'));
+			$data_invoice['jam_dan_tanggal_booking'] = date('Y-m-d H:i:s');
+			if(count($invoice) <= 0) {
+				$new_id_invoice = 'INV'. sprintf("%03d", 1);
+				$data_invoice['id_invoice'] = $new_id_invoice;
+				$this->hotel_model->add_invoice($data_invoice);
+			} else {
+				$last_id_invoice = (int)substr(end($invoice)['id_invoice'], 3);
+				print_r(end($invoice)['id_invoice']);
+				$new_id_invoice = 'INV'. sprintf("%03d", $last_id_invoice+1);
+				$data_invoice['id_invoice'] = $new_id_invoice;
+				$this->hotel_model->add_invoice($data_invoice);
+			}
 
-			$this->buku->addData($buku);
 			redirect(base_url());
 		}
-		// o Nama Lengkap Tamu
-		// o Nomor Telepon Tamu (validasi input berupa angka)
-		// o Email Tamu (validasi input berupa email)
-		// o Jumlah Kamar (tidak bisa melebihi jumlah kamar yang tersedia, dan tidak bisa <1)
-		// o Tanggal Check-in & Check-out (tanggal check-in tidak boleh lebih besar dari tanggal check-out)
-		// o Harga (berubah seiring jumlah kamar yang dipesan dan durasi)
 	}
 
 	public function compare_date($tgl_check_in){
@@ -91,5 +110,18 @@ class Hotel extends CI_Controller{
 			$this->form_validation->set_message('compare_date', '%s should be less than Tanggal Check-out.');
 			return False;
 		}
+	}
+
+	public function invoice() {
+		if($_SESSION['salt'] == 'admin') redirect(base_url());
+		else if($_SESSION['salt'] == 'user') {
+			$data['header'] = $this->_header("Invoices");
+			$data['footer'] = $this->_footer();
+	
+			$data['invoice'] = $this->hotel_model->get_invoice($_SESSION['id_user']);
+			$data['hotel'] = $this->hotel_model->get_hotel();
+
+			$this->load->view('pages/invoice.php', $data);
+		} else redirect(base_url('index.php/Login'));
 	}
 }
