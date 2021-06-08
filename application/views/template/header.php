@@ -102,6 +102,9 @@
 								<span class="sr-only">Toggle Dropdown</span>
 							</button>
 							<div class="dropdown-menu p-0 " style="background: #9DBEBB;">
+							<?php if($_SESSION['salt'] == 'user'){	 ?>
+								<a class="dropdown-item nav-item nav-link py-2 pr-0 text-center" href="<?= base_url('index.php/Login/profile') ?>"><i class="fa fa-user" aria-hidden="true"></i>
+									Profile</a> <?php } ?>
 								<a class="dropdown-item nav-item nav-link py-2 pr-0 text-center" href="<?= base_url('index.php/Login/logout') ?>"><i class="fa fa-sign-out-alt"></i> Log Out</a>
 							</div>
 						</div>

@@ -22,4 +22,12 @@ class User_model extends CI_Model {
         // $query = $this->db->query("SELECT salt FROM users WHERE email = $email");
         return $query->result_array();
     }
+
+    function get_email($id){
+        $this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('email', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

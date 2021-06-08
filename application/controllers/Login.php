@@ -96,4 +96,25 @@ class Login extends CI_Controller
         session_destroy();
         redirect(base_url());
     }
+
+    private function _header($title) {
+		$header['title']  = $title;
+		$header['style']  = $this->load->view('include/style', NULL,TRUE);
+       	$result =  $this->load->view('template/header', $header,TRUE);
+		return $result;
+	}
+
+	private function _footer() {
+        $footer['script'] = $this->load->view('include/script', NULL,TRUE);
+		$result = $this->load->view('template/footer', $footer,TRUE);
+		return $result;
+	}
+
+    public function profile(){
+        $data['header'] = $this->_header("Home");
+		$data['footer'] = $this->_footer();
+        $data['email'] = $this->user_model->get_email($_SESSION['id_user']);
+
+        $this->load->view('pages/profile_user',$data);
+    }
 }
