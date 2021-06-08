@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
     public function __construct()
     {
@@ -12,8 +13,9 @@ class Login extends CI_Controller {
         if (!isset($_SESSION)) session_start();
     }
 
-    public function index(){
-        
+    public function index()
+    {
+
         $vals = array(
             //'word'          => 'Random word',
             'img_path'      => './assets/captcha/',
@@ -35,16 +37,18 @@ class Login extends CI_Controller {
             )
         );
 
-        $cap = create_captcha($vals);
-        $image = $cap['image'];
-        $words = $cap['word'];
-        $data['image'] = $image;
-        $data['words'] = $words;
-        $_SESSION['captcha'] = $words;
+        // $cap = create_captcha($vals);
+        // var_dump($vals); 
+        // var_dump($cap);
+        // $image = $cap['image'];
+        // $words = $cap['word'];
+        // $data['image'] = $image;
+        // $data['words'] = $words;
+        // $_SESSION['captcha'] = $words;
         $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
         $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
 
-		$this->load->view('pages/login',$data);
+        $this->load->view('pages/login', $data);
     }
 
     public function validate()
@@ -52,7 +56,7 @@ class Login extends CI_Controller {
         if (isset($_POST['email']) && isset($_POST['password'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $captcha = $_POST['captcha'];
+            // $captcha = $_POST['captcha'];
 
             $salt = $this->user_model->get_salt($email);
             //cek User
@@ -61,7 +65,7 @@ class Login extends CI_Controller {
                 $password = md5($password . $salt);
                 $cekUser = $this->user_model->get_user($email, $password);
                 if ($cekUser) {
-                    if (strtolower($_SESSION['captcha']) == strtolower($captcha)) {
+                    // if (strtolower($_SESSION['captcha']) == strtolower($captcha)) {
                         if ($salt == "user") {
                             $_SESSION['id_user'] = $cekUser[0]['id_user'];
                             $_SESSION['name'] = $cekUser[0]['nama'];
@@ -71,12 +75,11 @@ class Login extends CI_Controller {
                             $_SESSION['id_admin'] = $cekUser[0]['id_user'];
                             $_SESSION['name'] = $cekUser[0]['nama'];
                             $_SESSION['salt'] = "admin";
-                            redirect(base_url('index.php/admin'));
+                            redirect(base_url('index.php/admin_hotel/daftar_hotel'));
                         }
-                    }
-                    else{
-                        redirect(base_url('index.php/login?captcha=false'));
-                    }
+                    // } else {
+                    //     redirect(base_url('index.php/login?captcha=false'));
+                    // }
                 } else {
                     redirect(base_url('index.php/login?pass=false'));
                 }

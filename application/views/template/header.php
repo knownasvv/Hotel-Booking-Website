@@ -46,14 +46,28 @@
 					<a class="nav-link" href="<?= base_url('index.php/Admin_hotel/daftar_pemesan') ?>">Admin_Pemesanan</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="<?= base_url('index.php/Login') ?>">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?= base_url('index.php/Register') ?>">Sign Up</a>
-				</li>
-			</ul>
+			<ul class="nav navbar-nav justify-content-end">
+					<?php if (isset($_SESSION['name'])) { ?>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle  a-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								<ul class="list-inline">
+									<li class="list-inline-item" style="text-transform: none;"><small>Welcome,</small></li>
+									<li class="list-inline-item"><?= ucwords($_SESSION['name']) ?></li>
+								</ul>
+							</a>
+							<div class="dropdown-menu p-0">
+								<a class="dropdown-item a-effect text-dark px-0 py-2" href="<?php echo base_url("index.php/Login/logout") ?>">Log Out</a>
+							</div>
+						</li>
+					<?php } else { ?>
+						<li class="nav-item">
+							<a class="nav-link a-effect" href="<?php echo base_url("index.php/login") ?>">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link a-effect" href="<?php echo base_url("index.php/register") ?>">Sign Up</a>
+						</li>
+					<?php } ?>
+				</ul>
 		</div>
 	</div>
 </nav>

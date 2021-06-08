@@ -37,15 +37,15 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group">
-                                 <?= $image ?> <!-- Captcha img -->
+                                 <!-- Captcha img -->
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="text" name="captcha" required class="form Control" placeholder="Enter Captcha Here">
-                            </div>
+                            </div> -->
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
-                            <p>info : user@gmail.com pass: user <br> admin@admin.com pass: admin </p>
+                            <p>info : orang@gmail.com pass: orang <br> admin@admin.com pass: admin </p>
                         </form>
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
