@@ -37,11 +37,11 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group">
-                                 <?= $image ?> <!-- Captcha img -->
+                                 <!-- Captcha img -->
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="text" name="captcha" required class="form Control" placeholder="Enter Captcha Here">
-                            </div>
+                            </div> -->
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
