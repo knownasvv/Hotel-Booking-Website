@@ -10,8 +10,18 @@ class Hotel extends CI_Controller{
 		$data['header'] = $this->_header("Home");
 		$data['footer'] = $this->_footer();
 
-		$data['hotel'] = $this->hotel_model->get_hotel();
 		$data['fasilitas'] = $this->hotel_model->get_fasilitas_hotel();
+		if($this->input->post('cari')==null&&$this->input->post('harga')==null&&$this->input->post('lokasi')==null&&$this->input->post('bintang')==null){
+			$data['hotel'] = $this->hotel_model->get_hotel();
+		}else if($this->input->post('cari')!=null){
+			$cari = $this->input->post('cari');
+			$data['hotel'] = $this->hotel_model->get_pilihan($cari);
+		}else {
+			$harga = $this->input->post('harga');
+			$lokasi = $this->input->post('lokasi');
+			$bintang = $this->input->post('bintang');
+			$data['hotel'] = $this->hotel_model->get_filter($harga,$lokasi,$bintang);
+		}
 
 		$this->load->view('pages/home.php', $data);
 	}
@@ -38,4 +48,5 @@ class Hotel extends CI_Controller{
 
 		$this->load->view('pages/detail.php', $data);
 	}
+
 }

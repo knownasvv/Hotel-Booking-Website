@@ -5,7 +5,7 @@
 <?php foreach($hotel as $h) {?>
 <div class="card text-center">
 	<div class="card-header">
-<a href="javascript:history.go(-1)" class="btn btn-danger float-left"><i class="fa fa-chevron-left"></i> Back</a>
+<a href="<?= base_url()?>" class="btn btn-danger float-left"><i class="fa fa-chevron-left"></i> Back</a>
 		
 		<h5 class="text-center">
 		<?= $h['nama'] ?>

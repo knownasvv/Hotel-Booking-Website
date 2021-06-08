@@ -29,6 +29,23 @@ class Hotel_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	function get_pilihan($cari){
+		$this->db->select('*');
+		$this->db->from('hotel');
+		$this->db->like('nama',$cari);
+		$query = $this->db->get();
+        return $query->result_array();
+	}
+
+	function get_filter($harga,$lokasi,$bintang){
+		$this->db->select('*');
+		$this->db->from('hotel');
+		$this->db->like('kota',$lokasi);
+		$this->db->where('harga >=', $harga);
+		$this->db->where('rating >=', $bintang);
+		$query = $this->db->get();
+        return $query->result_array();
+	}
 	
 
 }
