@@ -22,24 +22,37 @@
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="nama" id="name" placeholder="Your Name"/>
                             </div>
+                            <?= form_error('nama', "<div style='color: red;'>", "</div>") ?>
+
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
+                            <?= form_error('email', "<div style='color: red;'>", "</div>") ?>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="pass" placeholder="Password"/>
                             </div>
+                            <?= form_error('password', "<div style='color: red;'>", "</div>") ?>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
                             <div class="form-group">
+                                <label for="notelp"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="number" name="notelp" id="notelp" placeholder="Nomor Telepon"/>
+                            </div>
+                            <?= form_error('notelp', "<div style='color: red;'>", "</div>") ?>
+                            <div class="form-group">
+                                <label for="tgl"><i class="zmdi zmdi-calendar-note"></i></label>
+                                <input type="date" name="tanggal_lahir" id="tgl"/>
+                            </div>                      
+                            <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                <input type="submit" name="submit" id="signup" class="form-submit" value="Register"/>
                             </div>
                         </form>
                         <?php echo form_close() ?>

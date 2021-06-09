@@ -113,7 +113,7 @@ class Login extends CI_Controller
     public function profile(){
         $data['header'] = $this->_header("Home");
 		$data['footer'] = $this->_footer();
-        $data['email'] = $this->user_model->get_email($_SESSION['id_user']);
+        $data['profile'] = $this->user_model->get_profile($_SESSION['id_user']);
 
         $this->load->view('pages/profile_user',$data);
     }

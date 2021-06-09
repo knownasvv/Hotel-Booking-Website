@@ -23,10 +23,34 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    function get_email($id){
-        $this->db->select('email');
+    
+    public function add_user($id, $email,  $pass, $nama, $notelp){
+		$data = array(
+			'id_user' => $id,
+			'email' => $email,
+			'password' => $pass,
+			'nama' => $nama,
+			'notelp' => $notelp,
+			'salt' => 'user'
+		);
+		$this->db->insert('users', $data);
+	}
+
+    
+    public function get_last_id(){
+		$this->db->select('*');
 		$this->db->from('users');
-		$this->db->where('email', $id);
+		$this->db->order_by('id_user', 'DESC');
+		$this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    function get_profile($id){
+        $this->db->select('email,nama,tanggal_lahir,notelp');
+		$this->db->from('users');
+		$this->db->where('id_user', $id);
         $query = $this->db->get();
         return $query->result_array();
     }
