@@ -36,8 +36,9 @@
                             <?= form_error('password', "<div style='color: red;'>", "</div>") ?>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                <input type="password" name="confirm_password" id="re_pass" placeholder="Repeat your password"/>
                             </div>
+                            <?= form_error('confirm_password', "<div style='color: red;'>", "</div>") ?>
                             <div class="form-group">
                                 <label for="notelp"><i class="zmdi zmdi-phone"></i></label>
                                 <input type="number" name="notelp" id="notelp" placeholder="Nomor Telepon"/>
@@ -46,7 +47,8 @@
                             <div class="form-group">
                                 <label for="tgl"><i class="zmdi zmdi-calendar-note"></i></label>
                                 <input type="date" name="tanggal_lahir" id="tgl"/>
-                            </div>                      
+                            </div>
+                            <?= form_error('tanggal_lahir', "<div style='color: red;'>", "</div>") ?>                      
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>

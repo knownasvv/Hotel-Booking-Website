@@ -24,13 +24,14 @@ class User_model extends CI_Model {
     }
 
     
-    public function add_user($id, $email,  $pass, $nama, $notelp){
+    public function add_user($id, $email,  $pass, $nama, $notelp,$tgl){
 		$data = array(
 			'id_user' => $id,
 			'email' => $email,
 			'password' => $pass,
 			'nama' => $nama,
 			'notelp' => $notelp,
+            'tanggal_lahir'=>$tgl,
 			'salt' => 'user'
 		);
 		$this->db->insert('users', $data);
@@ -48,7 +49,7 @@ class User_model extends CI_Model {
 
 
     function get_profile($id){
-        $this->db->select('email,nama,tanggal_lahir,notelp');
+        $this->db->select('email,nama,tanggal_lahir,notelp,salt');
 		$this->db->from('users');
 		$this->db->where('id_user', $id);
         $query = $this->db->get();
