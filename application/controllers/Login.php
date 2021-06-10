@@ -38,8 +38,6 @@ class Login extends CI_Controller
         );
 
         $cap = create_captcha($vals);
-        var_dump($vals); 
-        var_dump($cap);
         $image = $cap['image'];
         $words = $cap['word'];
         $data['image'] = $image;
