@@ -60,8 +60,8 @@
     }
 
     .img-custom {
-        width: 100%;
-        height: 100px;
+        width: 85%;
+        height: 85px;
     }
 
     h6 {
@@ -226,7 +226,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <button class="btn-primary w-50" data-toggle="modal" type="button" data-target="#exampleModal">Edit</button>
+                                        <button class="btn-primary w-50 offset-sm-6" data-toggle="modal" type="button" data-target="#exampleModal">Edit</button>
                                     </div>
                                 </div>
                             </div>
