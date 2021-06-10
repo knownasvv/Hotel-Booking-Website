@@ -117,4 +117,10 @@ class Login extends CI_Controller
 
         $this->load->view('pages/profile_user',$data);
     }
+
+    public function edit(){
+        if($_POST['foto'] == null)$this->user_model->edit_user($_SESSION['id_user'],$_POST['nama'],$_POST['notelp'],$_POST['tanggal_lahir'],"default.jpg");
+        else $this->user_model->edit_user($_SESSION['id_user'],$_POST['nama'],$_POST['notelp'],$_POST['tanggal_lahir'],$_POST['foto']);
+        redirect(base_url('index.php/Login/profile'));
+    }
 }

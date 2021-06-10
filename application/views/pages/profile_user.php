@@ -11,7 +11,7 @@
     }
 
     .font-name {
-font-family: 'Noto Sans SC', sans-serif;
+        font-family: 'Noto Sans SC', sans-serif;
     }
 
     .user-card-full {
@@ -59,7 +59,7 @@ font-family: 'Noto Sans SC', sans-serif;
         border-radius: 50%
     }
 
-    .img-custom{
+    .img-custom {
         width: 100%;
         height: 100px;
     }
@@ -150,32 +150,39 @@ font-family: 'Noto Sans SC', sans-serif;
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="index.php/Login/err">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Nama :</label>
-                        <input type="text" class="form-control" >
+            <?php foreach ($profile as $p) { ?>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="<?= base_url('index.php/Login/edit') ?>">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nama :</label>
+                            <input type="text" name="nama" class="form-control" value="<?= $p['nama'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tanggal Lahir:</label>
+                            <input type="date" name="tanggal_lahir" class="form-control" value="<?= $p['tanggal_lahir'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nomor Telepon:</label>
+                            <input type="text" name="notelp" class="form-control" value="<?= $p['notelp'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Foto:</label>
+                            <input type="file" name="foto" value="<?= $p['foto'] ?>">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Tanggal Lahir:</label>
-                        <input type="text" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Nomor Telepon:</label>
-                        <input type="text" class="form-control" >
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -189,7 +196,7 @@ font-family: 'Noto Sans SC', sans-serif;
             <div class="padding">
                 <div class="row container d-flex justify-content-center">
                     <div class="col-xl-6 col-md-12">
-                        <div class="card user-card-full">
+                        <div class="card user-card-full card-lg">
                             <div class="row m-l-0 m-r-0">
                                 <div class="col-sm-4 bg-c-lite-green user-profile" style="background: #1ab3c7">
                                     <div class="card-block text-center text-white">

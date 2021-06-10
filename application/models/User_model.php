@@ -38,6 +38,17 @@ class User_model extends CI_Model {
 		$this->db->insert('users', $data);
 	}
 
+    public function edit_user($id,$nama,$notelp,$tanggal,$foto){
+        $data = array(
+            'nama' => $nama,
+            'notelp' => $notelp,
+            'tanggal_lahir' => $tanggal,
+            'foto' => $foto
+        );
+        
+        $this->db->update('users', $data, array('id_user' => $id));
+    }
+
     
     public function get_last_id(){
 		$this->db->select('*');
@@ -56,4 +67,6 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+
 }
