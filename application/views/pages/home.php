@@ -111,7 +111,7 @@
 										for ($i = 1; $i <= 5; $i++) {
 											if (round($rating - .25 ) >= $i) echo "<i class='fa fa-star'></i>";
 											else if (round($rating + .25 ) >= $i) echo "<i class='fa fa-star-half-alt'></i>"; 
-											else echo "<i class='fa fa-star'></i>";
+											else echo "<i class='far fa-star'></i>";
 										}
 										echo " <b>" . $h['rating'] ."</b>";
 									?>

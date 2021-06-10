@@ -38,7 +38,7 @@ class Register extends CI_Controller
       } else {
         $lastId = $this->user_model->get_last_id();
         $lastId = $lastId[0]['id_user'];
-        $this->user_model->add_user($lastId + 1, $_POST['email'], md5($_POST['password'] . "user"), $_POST['nama'], $_POST['notelp'], $_POST['tanggal_lahir']);
+        $this->user_model->add_user($lastId + 1, $_POST['email'], md5($_POST['password']."user"), $_POST['nama'], $_POST['notelp'], $_POST['tanggal_lahir']);
         redirect(base_url('index.php/login'));
       }
     }
