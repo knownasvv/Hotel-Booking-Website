@@ -24,9 +24,15 @@
 			<div class="modal-body">
 				<?php echo form_open('hotel')?>
 					<div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Harga :</label>
+                        <label class="col-sm-3 col-form-label">Harga Tertinggi :</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control"  name="harga" placeholder="Harga">
+                            <input type="text" class="form-control"  name="harga1" placeholder="Harga">
+                        </div>
+                    </div>
+					<div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Harga Termurah :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"  name="harga2" placeholder="Harga">
                         </div>
                     </div>
 					<div class="form-group row">

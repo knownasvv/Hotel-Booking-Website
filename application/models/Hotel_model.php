@@ -51,12 +51,14 @@ class Hotel_model extends CI_Model {
         return $query->result_array();
 	}
 
-	function get_filter($harga,$lokasi,$bintang){
+	function get_filter($harga1,$harga2,$lokasi,$bintang){
 		$this->db->select('*');
 		$this->db->from('hotel');
 		$this->db->like('kota',$lokasi);
-		$this->db->where('harga >=', $harga);
+		$this->db->where('harga <=', $harga1);
+		$this->db->where('harga >=', $harga2);
 		$this->db->where('rating >=', $bintang);
+		$this->db->where('rating <', $bintang+2);
 		$query = $this->db->get();
         return $query->result_array();
 	}

@@ -17,10 +17,11 @@ class Hotel extends CI_Controller{
 			$cari = $this->input->post('cari');
 			$data['hotel'] = $this->hotel_model->get_pilihan($cari);
 		}else {
-			$harga = $this->input->post('harga');
+			$harga1 = $this->input->post('harga1');
+			$harga2 = $this->input->post('harga2');
 			$lokasi = $this->input->post('lokasi');
 			$bintang = $this->input->post('bintang');
-			$data['hotel'] = $this->hotel_model->get_filter($harga,$lokasi,$bintang);
+			$data['hotel'] = $this->hotel_model->get_filter($harga1,$harga2,$lokasi,$bintang);
 		}
 
 		$this->load->view('pages/home.php', $data);
