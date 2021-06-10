@@ -130,7 +130,7 @@ foreach($invoice as $i) {
 													for ($int = 1; $int <= 5; $int++) {
 														if (round($rating - .25 ) >= $int) echo "<i class='fa fa-star'></i>";
 														else if (round($rating + .25 ) >= $int) echo "<i class='fa fa-star-half-alt'></i>"; 
-														else echo "<i class='fa fa-star'></i>";
+														else echo "<i class='far fa-star'></i>";
 													}
 													echo " <b>" . $h['rating'] ."</b>";
 												?>
