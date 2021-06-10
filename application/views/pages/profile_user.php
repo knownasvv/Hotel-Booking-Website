@@ -225,8 +225,8 @@
                                                 <h6 class="text-muted f-w-400"><?= $p['notelp'] ?></h6>
                                             </div>
                                         </div>
-
-                                        <button class="btn-primary" data-toggle="modal" type="button" data-target="#exampleModal">Edit</button>
+                                        <br>
+                                        <button class="btn-primary w-50" data-toggle="modal" type="button" data-target="#exampleModal">Edit</button>
                                     </div>
                                 </div>
                             </div>
