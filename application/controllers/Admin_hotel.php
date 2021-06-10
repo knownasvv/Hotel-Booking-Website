@@ -14,8 +14,9 @@ class Admin_hotel extends CI_Controller{
 			->set_theme('tablestrap4')
 			->set_subject('Hotel')
 			->set_relation_n_n('fasilitas', 'fasilitas_hotel', 'fasilitas', 'id_hotel', 'id_fasilitas', 'nama_fasilitas')
-			->columns('id_hotel','nama','fasilitas', 'gambar','jumlah_kamar','rating','harga','alamat','kota')
+			->columns('id_hotel','nama', 'fasilitas', 'gambar','jumlah_kamar','rating','harga','alamat','kota')
 			->callback_column('gambar', array($this, 'img_size'))
+			->callback_column('harga', array($this, 'harga_format'))
 			->fields('id_hotel','nama','fasilitas','gambar','jumlah_kamar','rating','harga','alamat','kota')
 			->required_fields('id_hotel','nama','jumlah_kamar','harga','alamat','kota')
 			->set_field_upload('gambar','assets/images/hotel')
@@ -32,9 +33,14 @@ class Admin_hotel extends CI_Controller{
 
 		$this->load->view('pages/admin_hotel', $data);
 	}
+
 	function img_size($value){
         return "<img src='". base_url('/assets/images/hotel/'.$value) ."' width='100px' height='100px'> </img>";
     }
+
+	function harga_format($harga) {
+		return "Rp ". number_format($harga, 2);
+	}
 
 	public function daftar_pemesan() {
 		$this->load->library('grocery_CRUD');
@@ -42,9 +48,10 @@ class Admin_hotel extends CI_Controller{
 
         $crud->set_table('invoice_booking_hotel')
 			->set_theme('tablestrap4')
-			->set_subject('invoice_booking_hotel')
+			->set_subject('Invoice Booking Hotel')
 			->columns('id_invoice','id_hotel','id_user','nama_lengkap_tamu','notelp_tamu', 'email_tamu','jumlah_kamar','tanggal_check-in','tanggal_check-out','harga','jam_dan_tanggal_booking')
 			->callback_column('gambar', array($this, 'img_size'))
+			->callback_column('harga', array($this, 'harga_format'))
 			->fields('id_invoice','id_hotel','id_user','nama_lengkap_tamu','notelp_tamu', 'email_tamu','jumlah_kamar','tanggal_check-in','tanggal_check-out','harga','jam_dan_tanggal_booking')
 			->required_fields('id_hotel','nama','jumlah_kamar','harga','alamat','kota')
 			->set_field_upload('gambar','assets/images/hotel')
