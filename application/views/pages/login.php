@@ -38,11 +38,22 @@
                             </div>
                             <div class="form-group">
                                 <?= $image ?>
-                                 <!-- Captcha img -->
+                                <!-- Captcha img -->
                             </div>
                             <div class="form-group">
                                 <input type="text" name="captcha" required class="form Control" placeholder="Enter Captcha Here">
                             </div>
+                            <?php if (isset($_GET['login'])) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                    <p style="color: red !important;"> Email atau Password salah.</p>
+                                </div>
+                            <?php    } ?>
+
+                            <?php if (isset($_GET['captcha'])) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                    <p style="color: red !important;"> Captcha salah :)</p>
+                                </div>
+                            <?php    } ?>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
