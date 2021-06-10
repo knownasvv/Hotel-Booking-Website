@@ -24,7 +24,7 @@ class User_model extends CI_Model {
     }
 
     
-    public function add_user($id, $email,  $pass, $nama, $notelp,$tgl){
+    public function add_user($id, $email,  $pass, $nama, $notelp,$tgl,$foto){
 		$data = array(
 			'id_user' => $id,
 			'email' => $email,
@@ -32,6 +32,7 @@ class User_model extends CI_Model {
 			'nama' => $nama,
 			'notelp' => $notelp,
             'tanggal_lahir'=>$tgl,
+            'foto'=>$foto,
 			'salt' => 'user'
 		);
 		$this->db->insert('users', $data);

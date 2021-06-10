@@ -14,6 +14,8 @@ class Register extends CI_Controller
   {
     $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
     $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
+    
+
     $this->load->view('pages/register', $data);
   }
 
@@ -32,13 +34,25 @@ class Register extends CI_Controller
       $this->form_validation->set_rules('tanggal_lahir', 'tanggal_lahir', 'required');
       $this->form_validation->set_rules('notelp', 'notelp', 'required|integer|min_length[11]');
       $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+      $config['upload_path'] = './assets/customer/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['overwrite'] = TRUE;
+        $config['max_size'] = '2048';
+
+        $this->upload->initialize($config);
+
+        if($this->upload->do_upload('foto')){ //kalo upload foto berhasil
+            $foto = $this->upload->data('file_name');
+        } else {                              //kalo ga upload
+            $foto = 'default.jpg';
+        }
 
       if ($this->form_validation->run() == false) {
         $this->load->view('pages/register', $data);
       } else {
         $lastId = $this->user_model->get_last_id();
         $lastId = $lastId[0]['id_user'];
-        $this->user_model->add_user($lastId + 1, $_POST['email'], md5($_POST['password'] . "user"), $_POST['nama'], $_POST['notelp'], $_POST['tanggal_lahir']);
+        $this->user_model->add_user($lastId + 1, $_POST['email'], md5($_POST['password'] . "user"), $_POST['nama'], $_POST['notelp'], $_POST['tanggal_lahir'], $foto);
         redirect(base_url('index.php/login'));
       }
     }
