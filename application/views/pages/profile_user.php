@@ -1,4 +1,6 @@
 <?= $header ?>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&family=Noto+Sans+SC:wght@300&display=swap" rel="stylesheet">
 <style>
     body {
         background-color: #f9f9fa
@@ -6,6 +8,10 @@
 
     .padding {
         padding: 3rem !important
+    }
+
+    .font-name {
+font-family: 'Noto Sans SC', sans-serif;
     }
 
     .user-card-full {
@@ -50,7 +56,12 @@
     }
 
     .img-radius {
-        border-radius: 5px
+        border-radius: 50%
+    }
+
+    .img-custom{
+        width: 100%;
+        height: 100px;
     }
 
     h6 {
@@ -135,8 +146,6 @@
     }
 </style>
 
-<?= var_dump($profile); ?>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -184,8 +193,8 @@
                             <div class="row m-l-0 m-r-0">
                                 <div class="col-sm-4 bg-c-lite-green user-profile" style="background: #1ab3c7">
                                     <div class="card-block text-center text-white">
-                                        <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
-                                        <h6 class="f-w-600"> <?= $p['nama'] ?> </h6>
+                                        <div class="m-b-25"> <img src="<?= base_url('assets/customer/' . $p['foto']) ?>" class="img-radius img-custom" alt="User-Profile-Image"> </div>
+                                        <h6 class="f-w-600 font-name" style="font-size: 20px"> <?= $p['nama'] ?> </h6>
                                         <p><?= $p['salt'] ?> </p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                     </div>
                                 </div>
@@ -211,12 +220,6 @@
                                         </div>
 
                                         <button class="btn-primary" data-toggle="modal" type="button" data-target="#exampleModal">Edit</button>
-
-                                        <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>

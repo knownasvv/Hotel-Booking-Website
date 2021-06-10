@@ -50,7 +50,7 @@ class User_model extends CI_Model {
 
 
     function get_profile($id){
-        $this->db->select('email,nama,tanggal_lahir,notelp,salt');
+        $this->db->select('email,nama,tanggal_lahir,notelp,salt,foto');
 		$this->db->from('users');
 		$this->db->where('id_user', $id);
         $query = $this->db->get();
