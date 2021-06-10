@@ -37,14 +37,14 @@ class Login extends CI_Controller
             )
         );
 
-        // $cap = create_captcha($vals);
-        // var_dump($vals); 
-        // var_dump($cap);
-        // $image = $cap['image'];
-        // $words = $cap['word'];
-        // $data['image'] = $image;
-        // $data['words'] = $words;
-        // $_SESSION['captcha'] = $words;
+        $cap = create_captcha($vals);
+        var_dump($vals); 
+        var_dump($cap);
+        $image = $cap['image'];
+        $words = $cap['word'];
+        $data['image'] = $image;
+        $data['words'] = $words;
+        $_SESSION['captcha'] = $words;
         $data['loginStyle'] = $this->load->view('include/loginStyle', NULL, TRUE);
         $data['loginScript'] = $this->load->view('include/loginScript', NULL, TRUE);
 
@@ -56,7 +56,7 @@ class Login extends CI_Controller
         if (isset($_POST['email']) && isset($_POST['password'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
-            // $captcha = $_POST['captcha'];
+            $captcha = $_POST['captcha'];
 
             $salt = $this->user_model->get_salt($email);
             //cek User
@@ -65,7 +65,7 @@ class Login extends CI_Controller
                 $password = md5($password . $salt);
                 $cekUser = $this->user_model->get_user($email, $password);
                 if ($cekUser) {
-                    // if (strtolower($_SESSION['captcha']) == strtolower($captcha)) {
+                    if (strtolower($_SESSION['captcha']) == strtolower($captcha)) {
                         if ($salt == "user") {
                             $_SESSION['id_user'] = $cekUser[0]['id_user'];
                             $_SESSION['name'] = $cekUser[0]['nama'];
@@ -77,9 +77,9 @@ class Login extends CI_Controller
                             $_SESSION['salt'] = "admin";
                             redirect(base_url('index.php/admin_hotel/daftar_hotel'));
                         }
-                    // } else {
-                    //     redirect(base_url('index.php/login?captcha=false'));
-                    // }
+                    } else {
+                        redirect(base_url('index.php/login?captcha=false'));
+                    }
                 } else {
                     redirect(base_url('index.php/login?pass=false'));
                 }
