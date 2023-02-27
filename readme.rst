@@ -1,8 +1,12 @@
 #############################
-PROJECT UAS - Web Programming
+FINAL PROJECT - Web Programming
 #############################
 
-Website Booking Hotel
+Booking hotel website
+Tech Stack:
+- CodeIgniter
+- MySQL
+- HTML, CSS, JS
 
 ****************
 Anggota kelompok
